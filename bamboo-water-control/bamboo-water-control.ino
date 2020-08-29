@@ -16,32 +16,36 @@ void setup()
 void loop()
 {
   int value = analogRead(sensor);
-  // Serial.println(value);
-  if (value < 400)
+  Serial.println(value);
+  if (value <= 400)
   {
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("Hoje eu :");
+    lcd.setCursor(0, 1);
+    lcd.print(" To MT Feliz =D");
+  }
+  else if (value >= 700)
+  {
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("Hoje eu :");
+    lcd.setCursor(0, 1);
+
+    lcd.print(" To  Triste =(");
+  }
+  else if (400 < value < 700)
+  {
+    lcd.clear();
     lcd.setCursor(0, 0);
     lcd.print("Hoje eu :");
     lcd.setCursor(0, 1);
     lcd.print(" To  Feliz =)");
-  }
-  else if (value > 850)
-  {
-    lcd.setCursor(0, 0);
-    lcd.print("Hoje eu :");
-    lcd.setCursor(0, 1);
-    lcd.print(" To  Triste =(");
-  }
-  else if (400 <= value <= 850)
-  {
-    lcd.setCursor(0, 0);
-    lcd.print("Hoje eu :");
-    lcd.setCursor(0, 1);
-    lcd.print(" To  Ok =|");
   }
   else
   {
     lcd.setCursor(0, 0);
     lcd.print("Error");
   }
-  delay(60 * 1000);
+  delay(2 * 1000);
 }
